@@ -3,6 +3,7 @@ import random
 
 pygame.init()
 
+# window
 screen = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('City-planning')
 icon = pygame.image.load('icon.png')
@@ -29,7 +30,7 @@ for i in range(int((500 / x) ** 2)):  # A for loop for row entries
 
 running = True
 
-
+# funcs
 def drawGrid(n):
     blockSize = n  # Set the size of the grid block
     for i in range(0, WINDOW_WIDTH, blockSize):
@@ -58,6 +59,7 @@ def fillGrid(n):
             b = b + 1
 
 
+# main
 while running:
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
