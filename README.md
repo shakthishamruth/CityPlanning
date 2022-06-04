@@ -16,4 +16,5 @@ Assume the city to have 50 percent residential 30 percent commercial and 20 perc
 •	Also, commercial areas should be scattered across the map.
 
 
+Instructions:
 Pls provide the input in terminal and in multiples of 5.
