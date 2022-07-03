@@ -1,4 +1,4 @@
-# VITMAS_CityPlanning
+# VITMAS_CityPlanning (Unfinished)
 Q.
 Assume a city made of square grids (n X n). The gird is filled with three different types of infrastructure: 
 1. Residential (plot as green) 
@@ -15,6 +15,3 @@ Assume the city to have 50 percent residential 30 percent commercial and 20 perc
 
 •	Also, commercial areas should be scattered across the map.
 
-
-Instructions:
-Pls provide the input in terminal and in multiples of 5.
