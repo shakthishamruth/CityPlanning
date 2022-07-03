@@ -16,8 +16,9 @@ SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 c = True
 
-if c == True:
-    x = int(input('Cube size(max = 100):'))
+if c:
+    x = 10
+    # x = int(input('Cube size(max = 100):'))
     x = x * 5
     c = False
 
@@ -29,6 +30,7 @@ for i in range(int((500 / x) ** 2)):  # A for loop for row entries
     matrix.append(a)
 
 running = True
+
 
 # funcs
 def drawGrid(n):
@@ -59,7 +61,7 @@ def fillGrid(n):
             b = b + 1
 
 
-# main
+# main loop
 while running:
     screen.fill((0, 0, 0))
     screen.blit(background, (0, 0))
@@ -67,7 +69,9 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-    if c == False:
+    if not c:
         fillGrid(x)
         drawGrid(x)
     pygame.display.update()
+
+# end
