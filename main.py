@@ -48,13 +48,13 @@ def fillGrid(n):
     blockSize = n - 2  # Set the size of the grid block
     for i in range(0, WINDOW_WIDTH, blockSize + 2):
         for j in range(0, WINDOW_HEIGHT, blockSize + 2):
-            if (matrix[a][b] <= 35):
+            if (matrix[a][b] <= 35):  # green
                 rect = pygame.Rect(i, j, blockSize, blockSize)
                 pygame.draw.rect(SCREEN, (0, 255, 0), rect)
-            elif matrix[a][b] >= 35 and matrix[a][b] <= 56:
+            elif matrix[a][b] >= 35 and matrix[a][b] <= 56:  # blue
                 rect = pygame.Rect(i, j, blockSize, blockSize)
                 pygame.draw.rect(SCREEN, (0, 0, 255), rect)
-            elif matrix[a][b] >= 56 and matrix[a][b] <= 70:
+            elif matrix[a][b] >= 56 and matrix[a][b] <= 70:  # yellow
                 rect = pygame.Rect(i, j, blockSize, blockSize)
                 pygame.draw.rect(SCREEN, (255, 241, 31), rect)
             a = a + 1
