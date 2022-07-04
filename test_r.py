@@ -29,16 +29,38 @@ for i in range(int((500 / x) ** 2)):  # A for loop for row entries
         a.append(int(0))
     matrix.append(a)
 
-# Algorithm to generate city
+matrix[int(random.randint(0, 9))][int(random.randint(0, 9))] = 1
+matrix[int(random.randint(0, 9))][int(random.randint(0, 9))] = 1
+matrix[int(random.randint(0, 9))][int(random.randint(0, 9))] = 1
+
 residential = 35
-while not residential == 0:
-    for i in range(1, 10):  # A for loop for row entries
-        for j in range(1, 10):  # A for loop for column entries
-            pick_num_i = 0
-            pick_num_j = 0
-            if not matrix[i - pick_num_i][j - pick_num_j] == 1:
-                matrix[i - pick_num_i][j - pick_num_j] = 1
+geni = 1
+genj = 1
+
+
+# Algorithm to generate city
+
+
+def gen():
+    global residential, geni, genj
+    if not residential == 0:
+        # A for loop for row entries
+        # A for loop for column entries
+        pick_num_i = int(random.randint(-1, 1))
+        pick_num_j = int(random.randint(-1, 1))
+        if matrix[geni][genj] == 1:
+            if matrix[int(geni - pick_num_i)][int(genj - pick_num_j)] == 0:
+                matrix[int(geni - pick_num_i)][int(genj - pick_num_j)] = 1
                 residential -= 1
+        if not genj == 8:
+            genj += 1
+        else:
+            if not geni == 8:
+                geni += 1
+                genj = 1
+            else:
+                geni = 1
+                genj = 1
 
 
 # funcs
@@ -57,7 +79,7 @@ def fillGrid(n):
     blockSize = n - 2  # Set the size of the grid block
     for i in range(0, WINDOW_WIDTH, blockSize + 2):
         for j in range(0, WINDOW_HEIGHT, blockSize + 2):
-            if (matrix[a][b] == 1):  # green
+            if (int(matrix[a][b]) >= 1):  # green
                 rect = pygame.Rect(i, j, blockSize, blockSize)
                 pygame.draw.rect(SCREEN, (0, 255, 0), rect)
             elif matrix[a][b] >= 35 and matrix[a][b] <= 56:  # blue
@@ -66,11 +88,9 @@ def fillGrid(n):
             elif matrix[a][b] >= 56 and matrix[a][b] <= 70:  # yellow
                 rect = pygame.Rect(i, j, blockSize, blockSize)
                 pygame.draw.rect(SCREEN, (255, 241, 31), rect)
-            elif matrix[a][b] == 0:
-                rect = pygame.Rect(i, j, blockSize, blockSize)
-                pygame.draw.rect(SCREEN, (255, 255, 255), rect)
-            a = a + 1
             b = b + 1
+        b = 0
+        a = a + 1
 
 
 running = True
@@ -86,6 +106,7 @@ while running:
     if not c:
         fillGrid(x)
         drawGrid(x)
+        gen()
     pygame.display.update()
 
 # end
