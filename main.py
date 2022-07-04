@@ -58,6 +58,7 @@ def fillGrid(n):
                 rect = pygame.Rect(i, j, blockSize, blockSize)
                 pygame.draw.rect(SCREEN, (255, 241, 31), rect)
             b = b + 1
+        b = 0
         a = a + 1
 
 
