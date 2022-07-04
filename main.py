@@ -57,8 +57,8 @@ def fillGrid(n):
             elif matrix[a][b] >= 56 and matrix[a][b] <= 70:  # yellow
                 rect = pygame.Rect(i, j, blockSize, blockSize)
                 pygame.draw.rect(SCREEN, (255, 241, 31), rect)
-            a = a + 1
             b = b + 1
+        a = a + 1
 
 
 # main loop
