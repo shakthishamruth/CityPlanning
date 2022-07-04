@@ -17,4 +17,4 @@ Assume the city to have 50 percent residential 30 percent commercial and 20 perc
 
 
 credits:
-Icon - `<a href="https://www.flaticon.com/free-icons/urban" title="urban icons">Urban icons created by Freepik - Flaticon</a>`
+Icon - `https://www.flaticon.com/free-icons/urban`Urban icons created by Freepik - Flaticon
