@@ -15,3 +15,6 @@ Assume the city to have 50 percent residential 30 percent commercial and 20 perc
 
 •	Also, commercial areas should be scattered across the map.
 
+
+credits:
+Icon - `<a href="https://www.flaticon.com/free-icons/urban" title="urban icons">Urban icons created by Freepik - Flaticon</a>`
