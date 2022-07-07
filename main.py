@@ -137,17 +137,17 @@ def gen_industrial():
         # A for loop for column entries
         # Create 2 industrial units
         if not industrial_block == 0:
-            y = random.randint(0, 19)
-            if not matrix[0][y + 6] == 1 and not matrix[0][y + 6] == 2:
+            y = random.randint(2, 17)
+            if not matrix[0][y + 7] == 1 and not matrix[0][y + 7] == 2:
                 matrix[0][y] = 4
                 industrial_block -= 1
-            elif not matrix[19][y + 6] == 1 and not matrix[19][y + 6] == 2:
+            elif not matrix[19][y + 7] == 1 and not matrix[19][y + 7] == 2:
                 matrix[19][y] = 4
                 industrial_block -= 1
-            elif not matrix[y + 6][0] == 1 and not matrix[y + 6][0] == 2:
+            elif not matrix[y + 7][0] == 1 and not matrix[y + 7][0] == 2:
                 matrix[y + 6][0] = 4
                 industrial_block -= 1
-            elif not matrix[y + 6][19] == 1 and not matrix[y + 6][19] == 2:
+            elif not matrix[y + 7][19] == 1 and not matrix[y + 7][19] == 2:
                 matrix[y + 6][19] = 4
                 industrial_block -= 1
         if industrial_block == 0:
