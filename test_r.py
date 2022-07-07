@@ -17,7 +17,7 @@ SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 c = True
 
 if c:
-    x = 10
+    x = 5
     # x = int(input('Cube size(max = 100):'))
     x = x * 5
     c = False
