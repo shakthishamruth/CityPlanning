@@ -17,7 +17,7 @@ SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 c = True
 
 if c:
-    x = 10
+    x = 5
     # x = int(input('Cube size(max = 100):'))
     x = x * 5
     c = False
@@ -29,14 +29,16 @@ for i in range(int((500 / x) ** 2)):  # A for loop for row entries
         a.append(int(0))
     matrix.append(a)
 
-matrix[int(random.randint(4, 5))][int(random.randint(4, 5))] = 1
+matrix[int(random.randint(8, 12))][int(random.randint(8, 12))] = 1
 
-residential = 35  # 70%50
-commercial = 21  # 70%30
+residential = 70  # 70%50
+commercial = 42  # 70%30
 geni = 3
 genj = 3
 geni_c = 1
 genj_c = 1
+
+done = False
 
 
 # Func to generate city
@@ -53,10 +55,10 @@ def gen_residential():
             if matrix[int(geni - pick_num_i)][int(genj - pick_num_j)] == 0:
                 matrix[int(geni - pick_num_i)][int(genj - pick_num_j)] = 1
                 residential -= 1
-        if not genj == 8:
+        if not genj == 18:
             genj += 1
         else:
-            if not geni == 8:
+            if not geni == 18:
                 geni += 1
                 genj = 1
             else:
@@ -65,9 +67,9 @@ def gen_residential():
 
 
 def gen_commercial():
-    global residential, commercial, geni_c, genj_c
+    global residential, commercial, geni_c, genj_c, done
 
-    if not commercial == 0 and residential >= 30:
+    if not commercial == 0 and residential >= 55:
         # A for loop for row entries
         # A for loop for column entries
         pick_num_i = int(random.randint(-1, 1))
@@ -76,10 +78,10 @@ def gen_commercial():
             if matrix[int(geni_c - pick_num_i)][int(genj_c - pick_num_j)] == 0:
                 matrix[int(geni_c - pick_num_i)][int(genj_c - pick_num_j)] = 2
                 commercial -= 1
-        if not genj_c == 8:
+        if not genj_c == 18:
             genj_c += 1
         else:
-            if not geni_c == 8:
+            if not geni_c == 18:
                 geni_c += 1
                 genj_c = 1
             else:
@@ -94,15 +96,18 @@ def gen_commercial():
             if matrix[int(geni_c - pick_num_i)][int(genj_c - pick_num_j)] == 0:
                 matrix[int(geni_c - pick_num_i)][int(genj_c - pick_num_j)] = 2
                 commercial -= 1
-        if not genj_c == 8:
+        if not genj_c == 18:
             genj_c += 1
         else:
-            if not geni_c == 8:
+            if not geni_c == 18:
                 geni_c += 1
                 genj_c = 1
             else:
                 geni_c = 1
                 genj_c = 1
+    if commercial == 0 and residential == 0 and not done:
+        print("Done")
+        done = True
 
 
 # Funcs
