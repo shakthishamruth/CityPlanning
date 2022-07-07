@@ -29,14 +29,19 @@ for i in range(int((500 / x) ** 2)):  # A for loop for row entries
         a.append(int(0))
     matrix.append(a)
 
-matrix[int(random.randint(8, 12))][int(random.randint(8, 12))] = 1
+matrix[int(random.randint(10, 12))][int(random.randint(10, 12))] = 1
+matrix[int(random.randint(8, 9))][int(random.randint(8, 9))] = 1
 
-residential = 70  # 70%50
-commercial = 42  # 70%30
+residential = 70 - 2  # 70%50*2
+commercial = 42  # 70%30*2
+industrial_block = 2
+industrial = 28 - 2  # 70%20*2
 geni = 3
 genj = 3
 geni_c = 1
 genj_c = 1
+geni_i = 0
+genj_i = 0
 
 done = False
 
@@ -105,7 +110,63 @@ def gen_commercial():
             else:
                 geni_c = 1
                 genj_c = 1
-    if commercial == 0 and residential == 0 and not done:
+
+
+def gen_industrial():
+    global industrial, geni_i, genj_i, done, industrial_block
+    if not industrial == 0 and residential >= 65:
+        # A for loop for row entries
+        # A for loop for column entries
+        pick_num_i = int(random.choice([-4, 4]))
+        pick_num_j = int(random.choice([-4, 4]))
+        if matrix[geni_i][genj_i] == 1 or matrix[geni_i][genj_i] == 2:
+            if matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] == 0:
+                matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] = 3
+                industrial -= 1
+        if not genj_i == 19:
+            genj_i += 1
+        else:
+            if not geni_i == 19:
+                geni_i += 1
+                genj_i = 0
+            else:
+                geni_i = 0
+                genj_i = 0
+    elif not industrial == 0 and commercial == 0 and residential == 0:
+        # A for loop for row entries
+        # A for loop for column entries
+        # Create 2 industrial units
+        if not industrial_block == 0:
+            y = random.randint(0, 19)
+            if not matrix[0][y + 6] == 1 and not matrix[0][y + 6] == 2:
+                matrix[0][y] = 4
+                industrial_block -= 1
+            elif not matrix[19][y + 6] == 1 and not matrix[19][y + 6] == 2:
+                matrix[19][y] = 4
+                industrial_block -= 1
+            elif not matrix[y + 6][0] == 1 and not matrix[y + 6][0] == 2:
+                matrix[y + 6][0] = 4
+                industrial_block -= 1
+            elif not matrix[y + 6][19] == 1 and not matrix[y + 6][19] == 2:
+                matrix[y + 6][19] = 4
+                industrial_block -= 1
+        if industrial_block == 0:
+            pick_num_i = int(random.randint(-1, 1))
+            pick_num_j = int(random.randint(-1, 1))
+            if matrix[geni_i][genj_i] == 4:
+                if matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] == 0:
+                    matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] = 4
+                    industrial -= 1
+            if not genj_i == 19:
+                genj_i += 1
+            else:
+                if not geni_i == 19:
+                    geni_i += 1
+                    genj_i = 0
+                else:
+                    geni_i = 0
+                    genj_i = 0
+    if commercial == 0 and residential == 0 and industrial == 0 and not done:
         print("Done")
         done = True
 
@@ -135,6 +196,9 @@ def fillGrid(n):
             elif matrix[a][b] == 3:  # yellow industrial
                 rect = pygame.Rect(i, j, blocksize, blocksize)
                 pygame.draw.rect(SCREEN, (255, 241, 31), rect)
+            elif matrix[a][b] == 4:  # yellow industrial block
+                rect = pygame.Rect(i, j, blocksize, blocksize)
+                pygame.draw.rect(SCREEN, (255, 241, 31), rect)
             b = b + 1
         b = 0
         a = a + 1
@@ -155,6 +219,7 @@ while running:
         drawGrid(x)
         gen_residential()
         gen_commercial()
+        gen_industrial()
     pygame.display.update()
 
 # end
