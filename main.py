@@ -3,25 +3,26 @@ import random
 
 pygame.init()
 
-# window
+# Window
 screen = pygame.display.set_mode((500, 500))
 pygame.display.set_caption('City-planning')
 icon = pygame.image.load('icon.png')
 pygame.display.set_icon(icon)
-background = pygame.image.load('background.png')
-
 WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 500
 SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 c = True
+done = False
 
+# Input map size
 if c:
-    x = 5
     # x = int(input('Cube size(max = 100):'))
+    x = 5
     x = x * 5
     c = False
 
+# To create empty plot of 20x20 matrix where empty land is denoted by 0 in matrix
 matrix = []
 for i in range(int((500 / x) ** 2)):  # A for loop for row entries
     a = []
@@ -29,21 +30,24 @@ for i in range(int((500 / x) ** 2)):  # A for loop for row entries
         a.append(int(0))
     matrix.append(a)
 
+# Residential (denoted by 1 in matrix)
 matrix[int(random.randint(10, 12))][int(random.randint(10, 12))] = 1
 matrix[int(random.randint(8, 9))][int(random.randint(8, 9))] = 1
-
 residential = 70 - 2  # 70%50*2
+
+# Commercial (denoted by 2 in matrix)
 commercial = 42  # 70%30*2
+
+# Industrial (denoted by 3 and 4 in matrix)
 industrial_block = 2
 industrial = 28 - 2  # 70%20*2
+
 geni = 3
 genj = 3
 geni_c = 1
 genj_c = 1
 geni_i = 0
 genj_i = 0
-
-done = False
 
 
 # Func to generate city
@@ -52,14 +56,13 @@ done = False
 def gen_residential():
     global residential, geni, genj
     if not residential == 0:
-        # A for loop for row entries
-        # A for loop for column entries
         pick_num_i = int(random.randint(-1, 1))
         pick_num_j = int(random.randint(-1, 1))
         if matrix[geni][genj] == 1:
             if matrix[int(geni - pick_num_i)][int(genj - pick_num_j)] == 0:
                 matrix[int(geni - pick_num_i)][int(genj - pick_num_j)] = 1
                 residential -= 1
+        # Nested for-for loop
         if not genj == 18:
             genj += 1
         else:
@@ -72,17 +75,15 @@ def gen_residential():
 
 
 def gen_commercial():
-    global residential, commercial, geni_c, genj_c, done
-
+    global residential, commercial, geni_c, genj_c
     if not commercial == 0 and residential >= 55:
-        # A for loop for row entries
-        # A for loop for column entries
         pick_num_i = int(random.randint(-1, 1))
         pick_num_j = int(random.randint(-1, 1))
         if matrix[geni_c][genj_c] == 1:
             if matrix[int(geni_c - pick_num_i)][int(genj_c - pick_num_j)] == 0:
                 matrix[int(geni_c - pick_num_i)][int(genj_c - pick_num_j)] = 2
                 commercial -= 1
+        # Nested for-for loop
         if not genj_c == 18:
             genj_c += 1
         else:
@@ -93,14 +94,13 @@ def gen_commercial():
                 geni_c = 1
                 genj_c = 1
     elif not commercial == 0 and residential == 0:
-        # A for loop for row entries
-        # A for loop for column entries
         pick_num_i = int(random.randint(-1, 1))
         pick_num_j = int(random.randint(-1, 1))
         if matrix[geni_c][genj_c] == 2:
             if matrix[int(geni_c - pick_num_i)][int(genj_c - pick_num_j)] == 0:
                 matrix[int(geni_c - pick_num_i)][int(genj_c - pick_num_j)] = 2
                 commercial -= 1
+        # Nested for-for loop
         if not genj_c == 18:
             genj_c += 1
         else:
@@ -113,16 +113,15 @@ def gen_commercial():
 
 
 def gen_industrial():
-    global industrial, geni_i, genj_i, done, industrial_block
+    global industrial, geni_i, genj_i, industrial_block, done
     if not industrial == 0 and residential >= 65:
-        # A for loop for row entries
-        # A for loop for column entries
         pick_num_i = int(random.choice([-4, 4]))
         pick_num_j = int(random.choice([-4, 4]))
         if matrix[geni_i][genj_i] == 1 or matrix[geni_i][genj_i] == 2:
             if matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] == 0:
                 matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] = 3
                 industrial -= 1
+        # Nested for-for loop
         if not genj_i == 19:
             genj_i += 1
         else:
@@ -133,8 +132,6 @@ def gen_industrial():
                 geni_i = 0
                 genj_i = 0
     elif not industrial == 0 and commercial == 0 and residential == 0:
-        # A for loop for row entries
-        # A for loop for column entries
         # Create 2 industrial units
         if not industrial_block == 0:
             y = random.randint(2, 17)
@@ -157,6 +154,7 @@ def gen_industrial():
                 if matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] == 0:
                     matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] = 4
                     industrial -= 1
+            # Nested for-for loop
             if not genj_i == 19:
                 genj_i += 1
             else:
@@ -204,12 +202,10 @@ def fillGrid(n):
         a = a + 1
 
 
+# Main loop
 running = True
-
-# main loop
 while running:
-    screen.fill((0, 0, 0))
-    screen.blit(background, (0, 0))
+    screen.fill((255, 255, 255))
     # Events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -221,5 +217,4 @@ while running:
         gen_commercial()
         gen_industrial()
     pygame.display.update()
-
 # end
