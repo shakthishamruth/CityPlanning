@@ -12,15 +12,15 @@ WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 500
 SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
-c = True
 done = False
 
 # Input map size
-if c:
-    # x = int(input('Cube size(max = 100):'))
-    x = 5
-    x = x * 5
-    c = False
+
+# x = int(input('Cube size(max = 100):'))
+# x = 5 creates 20x20 grid
+x = 5
+x = x * 5
+c = False
 
 # To create empty plot of 20x20 matrix where empty land is denoted by 0 in matrix
 matrix = []
@@ -33,14 +33,14 @@ for i in range(int((500 / x) ** 2)):  # A for loop for row entries
 # Residential (denoted by 1 in matrix)
 matrix[int(random.randint(10, 12))][int(random.randint(10, 12))] = 1
 matrix[int(random.randint(8, 9))][int(random.randint(8, 9))] = 1
-residential = 70 - 2  # 70%50*2
+residential = 140 - 2  # 70%50
 
 # Commercial (denoted by 2 in matrix)
-commercial = 42  # 70%30*2
+commercial = 84  # 70%30
 
 # Industrial (denoted by 3 and 4 in matrix)
 industrial_block = 2
-industrial = 28 - 2  # 70%20*2
+industrial = 56 - 2  # 70%20
 
 geni = 3
 genj = 3
@@ -48,6 +48,8 @@ geni_c = 1
 genj_c = 1
 geni_i = 0
 genj_i = 0
+
+cdis = 8
 
 
 # Func to generate city
@@ -76,7 +78,7 @@ def gen_residential():
 
 def gen_commercial():
     global residential, commercial, geni_c, genj_c
-    if not commercial == 0 and residential >= 55:
+    if not commercial == 0 and residential >= 100:
         pick_num_i = int(random.randint(-1, 1))
         pick_num_j = int(random.randint(-1, 1))
         if matrix[geni_c][genj_c] == 1:
@@ -113,8 +115,8 @@ def gen_commercial():
 
 
 def gen_industrial():
-    global industrial, geni_i, genj_i, industrial_block, done
-    if not industrial == 0 and residential >= 65:
+    global residential, commercial, industrial, geni_i, genj_i, industrial_block, done, cdis
+    if not industrial == 0 and residential >= 135:
         pick_num_i = int(random.choice([-4, 4]))
         pick_num_j = int(random.choice([-4, 4]))
         if matrix[geni_i][genj_i] == 1 or matrix[geni_i][genj_i] == 2:
@@ -135,18 +137,22 @@ def gen_industrial():
         # Create 2 industrial units
         if not industrial_block == 0:
             y = random.randint(2, 17)
-            if not matrix[0][y + 7] == 1 and not matrix[0][y + 7] == 2:
-                matrix[0][y] = 4
-                industrial_block -= 1
-            elif not matrix[19][y + 7] == 1 and not matrix[19][y + 7] == 2:
-                matrix[19][y] = 4
-                industrial_block -= 1
-            elif not matrix[y + 7][0] == 1 and not matrix[y + 7][0] == 2:
-                matrix[y + 6][0] = 4
-                industrial_block -= 1
-            elif not matrix[y + 7][19] == 1 and not matrix[y + 7][19] == 2:
-                matrix[y + 6][19] = 4
-                industrial_block -= 1
+            if not matrix[7][y] == 1 and not matrix[7][y] == 2:
+                if not matrix[0][y + cdis] == 1 and not matrix[0][y - cdis] == 1:
+                    matrix[0][y] = 4
+                    industrial_block -= 1
+            elif not matrix[y][7] == 1 and not matrix[y][7] == 2:
+                if not matrix[y + cdis][0] == 1 and not matrix[y - cdis][0] == 1:
+                    matrix[y][0] = 4
+                    industrial_block -= 1
+            elif not matrix[y][19 - 7] == 1 and not matrix[y][19 - 7] == 2:
+                if not matrix[y + cdis][19] == 1 and not matrix[y - cdis][19] == 1:
+                    matrix[y][19] = 4
+                    industrial_block -= 1
+            elif not matrix[19 - 7][y] == 1 and not matrix[19 - 7][y] == 2:
+                if not matrix[19][y + cdis] == 1 and not matrix[19][y - cdis] == 1:
+                    matrix[19][y] = 4
+                    industrial_block -= 1
         if industrial_block == 0:
             pick_num_i = int(random.randint(-1, 1))
             pick_num_j = int(random.randint(-1, 1))
