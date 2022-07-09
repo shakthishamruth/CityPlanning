@@ -1,11 +1,12 @@
-# VITMAS_CityPlanning (Unfinished)
-Q.
-Assume a city made of square grids (n X n). The gird is filled with three different types of infrastructure: 
+# VITMAS_CityPlanning
+
+
+Generates a city map made of square grids (20 X 20). The gird is filled with three different types of infrastructure: 
 1. Residential (plot as green) 
 2. Commercial (plot as blue) 
 3. Industrial (plot as yellow)
 
-Assume the city to have 50 percent residential 30 percent commercial and 20 percent industrial. And it only fills about 70 percent of the entire land. (Approximate values you can choose your own values) 
+The city fills about 70 percent of the entire land out of which 50 percent is residential 30 percent is commercial and 20 percent is industrial.
 
 •	Clumping of areas (it is preferable that we have a group of similar building to together… at the same time we need to ensure that we don’t just put the entire residential area into one clump)
 
@@ -16,5 +17,6 @@ Assume the city to have 50 percent residential 30 percent commercial and 20 perc
 •	Also, commercial areas should be scattered across the map.
 
 
-credits:
-Icon - `https://www.flaticon.com/free-icons/urban`Urban icons created by Freepik - Flaticon
+Credits:
+Icon - `https://www.flaticon.com/free-icons/urban` 
+Urban icons created by Freepik - Flaticon
