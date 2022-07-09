@@ -18,7 +18,4 @@ The city fills about 70 percent of the entire land out of which 50 percent is re
 
 
 Credits:
-Icon - `https://www.flaticon.com/free-icons/urban` 
-
-
-Urban icons created by Freepik - Flaticon
+Icon - `https://www.flaticon.com/free-icons/urban`   Urban icons created by Freepik - Flaticon
