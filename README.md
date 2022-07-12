@@ -24,4 +24,4 @@ The generated city follows the following features:
 Press `R` key on keyboard to reset.
 
 Credits:
-Icon - `https://www.flaticon.com/free-icons/urban`   Urban icons created by Freepik - Flaticon
+Icon -  [Urban icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/urban)
