@@ -20,7 +20,7 @@ The generated city follows the following features:
 •	Also, commercial areas should be scattered across the map.
 
 
-
+---
 Press `R` key on keyboard to reset.
 
 Credits:
