@@ -20,7 +20,7 @@ done = False
 # x = 5 creates 20x20 grid
 x = 5
 x = x * 5
-c = False
+start = True
 
 # To create empty plot of 20x20 matrix where empty land is denoted by 0 in matrix
 matrix = []
@@ -210,6 +210,32 @@ def fillGrid(n):
         a = a + 1
 
 
+def reset():
+    global matrix, residential, commercial, industrial, industrial_block, geni, genj, geni_i, genj_i, geni_c, genj_c, done, start, x
+    if not start:
+        print('Reset!')
+        matrix = []
+        for i in range(int((500 / x) ** 2)):  # A for loop for row entries
+            a = []
+            for j in range(int((500 / x) ** 2)):  # A for loop for column entries
+                a.append(int(0))
+            matrix.append(a)
+        matrix[int(random.randint(10, 12))][int(random.randint(10, 12))] = 1
+        matrix[int(random.randint(8, 9))][int(random.randint(8, 9))] = 1
+        residential = 140 - 2  # 70%50
+        commercial = 84  # 70%30
+        industrial_block = 2
+        industrial = 56 - 2  # 70%20
+        geni = 3
+        genj = 3
+        geni_c = 1
+        genj_c = 1
+        geni_i = 0
+        genj_i = 0
+        start = True
+        done = False
+
+
 # Main loop
 running = True
 while running:
@@ -217,12 +243,17 @@ while running:
     # Events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            print('\nQUIT!')
             running = False
-    if not c:
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_r:
+                start = False
+                reset()
+    if start:
         fillGrid(x)
         drawGrid(x)
         gen_residential()
         gen_commercial()
         gen_industrial()
     pygame.display.update()
-# end
+# END
