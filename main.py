@@ -39,8 +39,8 @@ residential = 140 - 2  # 70%50
 commercial = 84  # 70%30
 
 # Industrial (denoted by 3 and 4 in matrix)
-industrial_block = 2
-industrial = 56 - 2  # 70%20
+industrial_block = 3
+industrial = 56 - 3  # 70%20
 
 geni = 3
 genj = 3
@@ -78,7 +78,7 @@ def gen_residential():
 
 def gen_commercial():
     global residential, commercial, geni_c, genj_c
-    if not commercial == 0 and residential >= 100:
+    if not commercial == 0 and residential >= 70:
         pick_num_i = int(random.randint(-1, 1))
         pick_num_j = int(random.randint(-1, 1))
         if matrix[geni_c][genj_c] == 1:
@@ -224,8 +224,8 @@ def reset():
         matrix[int(random.randint(8, 9))][int(random.randint(8, 9))] = 1
         residential = 140 - 2  # 70%50
         commercial = 84  # 70%30
-        industrial_block = 2
-        industrial = 56 - 2  # 70%20
+        industrial_block = 3
+        industrial = 56 - 3  # 70%20
         geni = 3
         genj = 3
         geni_c = 1
@@ -243,7 +243,7 @@ while running:
     # Events
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            print('\nQUIT!')
+            print('\nCLOSED!')
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_r:
