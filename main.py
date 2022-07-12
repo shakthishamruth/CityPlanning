@@ -12,8 +12,6 @@ WINDOW_HEIGHT = 500
 WINDOW_WIDTH = 500
 SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
-done = False
-
 # Input map size
 
 # x = int(input('Cube size(max = 100):'))
@@ -21,6 +19,7 @@ done = False
 x = 5
 x = x * 5
 start = True
+done = False
 
 # To create empty plot of 20x20 matrix where empty land is denoted by 0 in matrix
 matrix = []
