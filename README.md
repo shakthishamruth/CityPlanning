@@ -5,6 +5,7 @@ Run "main.py" python file to generate a city map made of square grids (20 X 20).
 1. Residential (plot as green) 
 2. Commercial (plot as blue) 
 3. Industrial (plot as yellow)
+4. Empty (plot as white)
 
 The city fills about 70 percent of the entire land out of which 50 percent is residential 30 percent is commercial and 20 percent is industrial
 
