@@ -1,7 +1,7 @@
 # VITMAS_CityPlanning
 
 
-Run "main.py" python file to generate a city map made of square grids (20 X 20). The gird is filled with three different types of infrastructure: 
+Run `main.py` python file to generate a city map made of square grids (20 X 20). The gird is filled with three different types of infrastructure: 
 1. Residential (plot as green) 
 2. Commercial (plot as blue) 
 3. Industrial (plot as yellow)
@@ -18,6 +18,10 @@ The generated city follows the following features:
 •	Also, it is preferable to have commercial buildings near to residential buildings) 
 
 •	Also, commercial areas should be scattered across the map.
+
+
+
+Press `R` key on keyboard to reset.
 
 Credits:
 Icon - `https://www.flaticon.com/free-icons/urban`   Urban icons created by Freepik - Flaticon
