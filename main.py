@@ -138,28 +138,30 @@ def gen_industrial():
         if not industrial_block == 0:
             y = random.randint(2, 17)
             if not matrix[7][y] == 1 and not matrix[7][y] == 2:
-                if not matrix[0][y + cdis] == 1 and not matrix[0][y - cdis] == 1:
+                if not matrix[0][y + cdis] == 1 and not matrix[0][y - cdis] == 1 and matrix[0][y] == 0:
                     matrix[0][y] = 4
                     industrial_block -= 1
             elif not matrix[y][7] == 1 and not matrix[y][7] == 2:
-                if not matrix[y + cdis][0] == 1 and not matrix[y - cdis][0] == 1:
+                if not matrix[y + cdis][0] == 1 and not matrix[y - cdis][0] == 1 and matrix[y][0] == 0:
                     matrix[y][0] = 4
                     industrial_block -= 1
             elif not matrix[y][19 - 7] == 1 and not matrix[y][19 - 7] == 2:
-                if not matrix[y + cdis][19] == 1 and not matrix[y - cdis][19] == 1:
+                if not matrix[y + cdis][19] == 1 and not matrix[y - cdis][19] == 1 and matrix[y][19] == 0:
                     matrix[y][19] = 4
                     industrial_block -= 1
             elif not matrix[19 - 7][y] == 1 and not matrix[19 - 7][y] == 2:
-                if not matrix[19][y + cdis] == 1 and not matrix[19][y - cdis] == 1:
+                if not matrix[19][y + cdis] == 1 and not matrix[19][y - cdis] == 1 and matrix[19][y] == 0:
                     matrix[19][y] = 4
                     industrial_block -= 1
         if industrial_block == 0:
             pick_num_i = int(random.randint(-1, 1))
             pick_num_j = int(random.randint(-1, 1))
             if matrix[geni_i][genj_i] == 4:
-                if matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] == 0:
-                    matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] = 4
-                    industrial -= 1
+                if not matrix[geni_i + 3][genj_i] == 1 and not matrix[geni_i - 3][genj_i] == 1:
+                    if not matrix[geni_i][genj_i + 3] == 1 and not matrix[geni_i][genj_i - 3] == 1:
+                        if matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] == 0:
+                            matrix[int(geni_i - pick_num_i)][int(genj_i - pick_num_j)] = 4
+                            industrial -= 1
             # Nested for-for loop
             if not genj_i == 19:
                 genj_i += 1
