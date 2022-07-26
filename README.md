@@ -9,7 +9,7 @@ Run `main.py` python file to generate a city map made of square grids (20 X 20).
 
 The city fills about 70 percent of the entire land out of which 50 percent is residential 30 percent is commercial and 20 percent is industrial
 
-The generated city follows the following features:
+The generated city should follow the following features:
 
 •	Clumping of areas (it is preferable that we have a group of similar building to together… at the same time we need to ensure that we don’t just put the entire residential area into one clump)
 
