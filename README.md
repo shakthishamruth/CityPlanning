@@ -1,4 +1,4 @@
-# VITMAS_CityPlanning
+# CityPlanning
 
 
 Run `main.py` python file to generate a city map made of square grids (20 X 20). The gird is filled with three different types of infrastructure: 
