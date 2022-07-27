@@ -14,10 +14,8 @@ SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 # Input map size
 
-# x = int(input('Cube size(max = 100):'))
-# x = 5 creates 20x20 grid
-x = 5
-x = x * 5
+# x = 25 creates 20x20 grid where 1 cube length is 25units
+x = 25
 start = True
 done = False
 
