@@ -2,10 +2,12 @@
 
 
 Run `main.py` python file to generate a city map made of square grids (20 X 20). The gird is filled with three different types of infrastructure: 
-1. Residential (plot as green) 
-2. Commercial (plot as blue) 
-3. Industrial (plot as yellow)
-4. Empty (plot as white)
+
+1. Empty (plot as white)
+2. Residential (plot as green) 
+3. Commercial (plot as blue) 
+4. Industrial (plot as yellow)
+
 
 The city fills about 70 percent of the entire land out of which 50 percent is residential 30 percent is commercial and 20 percent is industrial
 
