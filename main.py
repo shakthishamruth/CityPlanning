@@ -14,7 +14,7 @@ SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 # Input map size
 
-# x = 25 creates 20x20 grid where 1 cube length is 25units
+# x = 25 creates 20x20 grid where 1 square length is 25units
 x = 25
 start = True
 done = False
