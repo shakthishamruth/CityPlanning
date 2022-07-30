@@ -14,30 +14,32 @@ SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 # Input map size
 
-# x = 25 creates 20x20 grid where 1 square length is 25units
-x = 25
+# l = 25 creates 20x20 grid where 1 square length is 25units
+l = 25
+# m*
+m = ((500 / l) ** 2) / 100
 start = True
 done = False
 
 # To create empty plot of 20x20 matrix where empty land is denoted by 0 in matrix
 matrix = []
-for i in range(int((500 / x) ** 2)):  # A for loop for row entries
+for i in range(int((500 / l) ** 2)):  # A for loop for row entries
     a = []
-    for j in range(int((500 / x) ** 2)):  # A for loop for column entries
+    for j in range(int((500 / l) ** 2)):  # A for loop for column entries
         a.append(int(0))
     matrix.append(a)
 
 # Residential (denoted by 1 in matrix)
 matrix[int(random.randint(10, 12))][int(random.randint(10, 12))] = 1
 matrix[int(random.randint(8, 9))][int(random.randint(8, 9))] = 1
-residential = 35 * (((500 / x) ** 2) / 100) - 2  # 70%50
+residential = (35 * m) - 2  # 70%50
 
 # Commercial (denoted by 2 in matrix)
-commercial = 21 * (((500 / x) ** 2) / 100)  # 70%30
+commercial = 21 * m  # 70%30
 
 # Industrial (denoted by 3 and 4 in matrix)
 industrial_block = 3
-industrial = 14 * (((500 / x) ** 2) / 100) - 3  # 70%20
+industrial = (14 * m) - 3  # 70%20
 
 geni = 3
 genj = 3
@@ -208,13 +210,13 @@ def fillGrid(n):
 
 
 def reset():
-    global matrix, residential, commercial, industrial, industrial_block, geni, genj, geni_i, genj_i, geni_c, genj_c, done, start, x
+    global matrix, residential, commercial, industrial, industrial_block, geni, genj, geni_i, genj_i, geni_c, genj_c, done, start, l, m
     if not start:
         print('Reset!')
         matrix = []
-        for i in range(int((500 / x) ** 2)):  # A for loop for row entries
+        for i in range(int((500 / l) ** 2)):  # A for loop for row entries
             a = []
-            for j in range(int((500 / x) ** 2)):  # A for loop for column entries
+            for j in range(int((500 / l) ** 2)):  # A for loop for column entries
                 a.append(int(0))
             matrix.append(a)
         matrix[int(random.randint(10, 12))][int(random.randint(10, 12))] = 1
@@ -247,8 +249,8 @@ while running:
                 start = False
                 reset()
     if start:
-        fillGrid(x)
-        drawGrid(x)
+        fillGrid(l)
+        drawGrid(l)
         gen_residential()
         gen_commercial()
         gen_industrial()
