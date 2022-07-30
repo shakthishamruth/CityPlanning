@@ -15,13 +15,13 @@ SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 c = True
 
 if c:
-    x = int(input('square size(max = 500):'))
+    l = int(input('square size(max = 500):'))
     c = False
 
 matrix = []
-for i in range(int((500 / x) ** 2)):  # A for loop for row entries
+for i in range(int((500 / l) ** 2)):  # A for loop for row entries
     a = []
-    for j in range(int((500 / x) ** 2)):  # A for loop for column entries
+    for j in range(int((500 / l) ** 2)):  # A for loop for column entries
         a.append(int(random.randint(1, 101)))
     matrix.append(a)
 
@@ -63,6 +63,6 @@ while running:
         if event.type == pygame.QUIT:
             running = False
     if not c:
-        fillGrid(x)
-        drawGrid(x)
+        fillGrid(l)
+        drawGrid(l)
     pygame.display.update()
