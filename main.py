@@ -30,14 +30,14 @@ for i in range(int((500 / x) ** 2)):  # A for loop for row entries
 # Residential (denoted by 1 in matrix)
 matrix[int(random.randint(10, 12))][int(random.randint(10, 12))] = 1
 matrix[int(random.randint(8, 9))][int(random.randint(8, 9))] = 1
-residential = 140 - 2  # 70%50
+residential = 35 * (((500 / x) ** 2) / 100) - 2  # 70%50
 
 # Commercial (denoted by 2 in matrix)
-commercial = 84  # 70%30
+commercial = 21 * (((500 / x) ** 2) / 100)  # 70%30
 
 # Industrial (denoted by 3 and 4 in matrix)
 industrial_block = 3
-industrial = 56 - 3  # 70%20
+industrial = 14 * (((500 / x) ** 2) / 100) - 3  # 70%20
 
 geni = 3
 genj = 3
